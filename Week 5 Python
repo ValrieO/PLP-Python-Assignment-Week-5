@@ -1,0 +1,47 @@
+class Superhero:
+    def __init__(self, name, power, health):
+        self.name = name
+        self.power = power
+        self.__health = health  # Encapsulated attribute
+
+    def attack(self, enemy):
+        print(f"{self.name} attacks {enemy} using {self.power}!")
+
+    def heal(self, amount):
+        self.__health += amount
+        print(f"{self.name} heals and now has {self.__health} health.")
+
+    def get_health(self):
+        return self.__health
+
+    def __str__(self):
+        return f"Superhero: {self.name}, Power: {self.power}, Health: {self.__health}"
+
+
+# Subclass demonstrating inheritance and polymorphism
+class FlyingSuperhero(Superhero):
+    def __init__(self, name, power, health, flight_speed):
+        super().__init__(name, power, health)
+        self.flight_speed = flight_speed
+
+    def fly(self):
+        print(f"{self.name} flies at {self.flight_speed} km/h!")
+
+    # Polymorphism: override attack method
+    def attack(self, enemy):
+        print(f"{self.name} swoops from the sky and attacks {enemy} with {self.power}!")
+
+
+# Create superhero objects
+hero1 = Superhero("ShadowBlade", "Shadow Strike", 100)
+hero2 = FlyingSuperhero("SkyWing", "Sky Blast", 120, 300)
+
+# Interact with the objects
+print(hero1)
+hero1.attack("VillainX")
+hero1.heal(20)
+
+print("\n" + str(hero2))
+hero2.attack("Dr. Doom")
+hero2.fly()
+hero2.heal(30)
