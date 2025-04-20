@@ -1,0 +1,42 @@
+class Vehicle:
+    def move(self):
+        raise NotImplementedError("This method should be overridden by subclasses")
+
+
+class Car(Vehicle):
+    def move(self):
+        print("Car is driving on the road.")
+
+
+class Plane(Vehicle):
+    def move(self):
+        print("Plane is flying in the sky.")
+
+
+class Boat(Vehicle):
+    def move(self):
+        print("Boat is sailing on water.")
+
+
+class Train(Vehicle):
+    def move(self):
+        print("Train is running on tracks.")
+
+
+# Test the polymorphism
+def show_movement(vehicle):
+    vehicle.move()
+
+
+# Create instances
+car = Car()
+plane = Plane()
+boat = Boat()
+train = Train()
+
+# Use polymorphism to call move() on each
+vehicles = [car, plane, boat, train]
+
+print("Vehicle Movements:\n")
+for v in vehicles:
+    show_movement(v)
